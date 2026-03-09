@@ -7,7 +7,7 @@ import shot
 
 
 def main():
-    print("Starting asteroids!")
+    print("Starting Asteroids!")
     print(f"Screen width: {constants.SCREEN_WIDTH}")
     print(f"Screen height: {constants.SCREEN_HEIGHT}")
 
@@ -15,8 +15,7 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
-    screen = pygame.display.set_mode(
-        (constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
     print(pygame.display.Info())
 
     updateable = pygame.sprite.Group()
@@ -26,7 +25,7 @@ def main():
     asteroids = pygame.sprite.Group()
     asteroid.Asteroid.containers = (updateable, drawable, asteroids)
 
-    asteroidfield.AsteroidField.containers = (updateable)
+    asteroidfield.AsteroidField.containers = updateable
     asteroid_field = asteroidfield.AsteroidField()
 
     shots = pygame.sprite.Group()
@@ -50,7 +49,7 @@ def main():
             if p.check_collision(a):
                 print("Game over!")
                 running = False
-            
+
             for s in shots:
                 if s.check_collision(a):
                     a.split()
